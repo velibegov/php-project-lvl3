@@ -5,17 +5,27 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
+     
+    services:
+      postgres:
+        image: postgres:10.8
+        env:
+          POSTGRES_DB: postgres
+        ports:
+        - 5432:5432
+        
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
+      
+    - name: PHP Setup
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '7.4'
+        extensions: mbstring, dom, pgsql
+        tools: prestessimo
 
-    - name: PHP Security Checker
-      uses: StephaneBour/actions-php-security-checker@1.1
-
-    - name: Setup project
+    - name: Install
       run: make setup
 
-    - name: Check lint
+    - name: Lint 
       run: make lint
-
-    - name: Execute tests (Unit and Feature tests) via PHPUnit
-      run: make test
