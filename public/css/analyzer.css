@@ -1,0 +1,11 @@
+.container-fluid {
+    display: flex;
+    /*height: 400px;
+    width: 100vh;
+    flex-flow: row;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    background-color: #2d3748;
+    font-family: Nunito, cursive;
+    font-size: xx-large;*/
+}

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UrlController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,7 +13,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/analyzer', [UrlController::class, 'formShow'])->name('analyzer.formShow');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::post('/analyzer', [UrlController::class, 'store'])->name('analyzer.store');
+
+Route::get('/analyzer/urls', [UrlController::class, 'index'])->name('analyzer.index');
+
+Route::get('/analyzer/{id}', [UrlController::class, 'show'])->name('analyzer.show');
