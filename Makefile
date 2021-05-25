@@ -3,6 +3,7 @@ start:
 
 setup:
 	composer install
+	npm cache clean --force
 	npm install
 	cp -n .env.example .env|| true
 	php artisan config:cache
